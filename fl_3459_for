@@ -1,0 +1,310 @@
+2024-05-12 08:15:54,312	INFO worker.py:1743 -- Started a local Ray instance. View the dashboard at [1m[32m127.0.0.1:8265 [39m[22m
+Setting up a new session...
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 1278, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 1038, in _send_output
+    self.send(msg)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 976, in send
+    self.connect()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f1b08419c60>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /env/main (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b08419c60>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /env/main (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b08419c60>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[Errno 111] Connection refused
+Visdom.setup_socket.<locals>.on_close() takes 1 positional argument but 3 were given
+Exception in user code:
+------------------------------------------------------------
+==================== FedAvg ====================                                
+Experiment Arguments:                                                           
+{                                                                               
+  "mode": "parallel",                                                           
+  "common": {                                                                   
+    "dataset": "tiny_imagenet",                                                 
+    "seed": 42,                                                                 
+    "model": "res18",                                                           
+    "join_ratio": 0.4,                                                          
+    "global_epoch": 1,                                                          
+    "local_epoch": 5,                                                           
+    "finetune_epoch": 0,                                                        
+    "batch_size": 32,                                                           
+    "test_interval": 100,                                                       
+    "straggler_ratio": 0,                                                       
+    "straggler_min_local_epoch": 0,                                             
+    "external_model_params_file": "",                                           
+    "optimizer": {                                                              
+      "lr": 0.01,                                                               
+      "dampening": 0,                                                           
+      "weight_decay": 0,                                                        
+      "momentum": 0,                                                            
+      "nesterov": false,                                                        
+      "name": "sgd"                                                             
+    },                                                                          
+    "eval_test": true,                                                          
+    "eval_val": false,                                                          
+    "eval_train": false,                                                        
+    "verbose_gap": 10,                                                          
+    "visible": true,                                                            
+    "use_cuda": true,                                                           
+    "save_log": true,                                                           
+    "save_model": false,                                                        
+    "save_fig": true,                                                           
+    "save_metrics": true,                                                       
+    "viz_win_name": null,                                                       
+    "check_convergence": true,                                                  
+    "lr_scheduler": {                                                           
+      "step_size": 10,                                                          
+      "name": "step"                                                            
+    }                                                                           
+  },                                                                            
+  "parallel": {                                                                 
+    "ray_cluster_addr": null,                                                   
+    "num_gpus": 1.0,                                                            
+    "num_cpus": 32.0,                                                           
+    "num_workers": 2                                                            
+  },                                                                            
+  "dataset": {                                                                  
+    "client_num": 100,                                                          
+    "test_ratio": 0.25,                                                         
+    "val_ratio": 0.0,                                                           
+    "seed": 42,                                                                 
+    "split": "sample",                                                          
+    "alpha": 0.1,                                                               
+    "least_samples": 40                                                         
+  }                                                                             
+}                                                                               
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 1278, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 1038, in _send_output
+    self.send(msg)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 976, in send
+    self.connect()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f1b080bd420>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /close (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b080bd420>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /close (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b080bd420>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 1278, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 1038, in _send_output
+    self.send(msg)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 976, in send
+    self.connect()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f1b0812d270>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /update (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b0812d270>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /update (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b0812d270>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 1278, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 1038, in _send_output
+    self.send(msg)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/http/client.py", line 976, in send
+    self.connect()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f1b0812f850>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /update (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b0812f850>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/fs/nexus-scratch/cacquaye/miniconda3/envs/fl-bench/lib/python3.10/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /update (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1b0812f850>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Exception in user code:
+------------------------------------------------------------
+Exception in user code:
+------------------------------------------------------------
+Exception in user code:
+------------------------------------------------------------
+Training... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:01:38
+FedAvg's average time taken by each global epoch: 1 min 37.98 sec.              
+FedAvg's total running time: 0 h 1 m 38 s.                                      
+==================== FedAvg Experiment Results: ====================            
+Format: (before local fine-tuning) -> (after local fine-tuning)                 
+{}                                                                              
+========== FedAvg Convergence on train clients ==========                       
+test (before local training):                                                   
+test (after local training):                                                    
+40.0%(48.87%) at epoch: 0                                                       
+==================== FedAvg Max Accuracy ====================                   
+all_clients:                                                                    
